@@ -1,0 +1,21 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="ssmTestMySQL:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/ssmTestMySQL_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="ssmTestMySQL/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="ssmTestMySQL" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Spring-4.3.18.RELEASE" />
+          <element id="library" level="project" name="Spring MVC-4.3.18.RELEASE" />
+          <element id="library" level="project" name="standard-1.1.2" />
+          <element id="library" level="project" name="asm-3.2" />
+          <element id="library" level="project" name="commons-pool-1.6" />
+          <element id="library" level="project" name="mysql-connector-java-5.1.7-bin" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

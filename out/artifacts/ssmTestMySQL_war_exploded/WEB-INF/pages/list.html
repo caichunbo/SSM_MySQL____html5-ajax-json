@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+</head>
+
+<script>
+
+    /**
+     * 通过javascript获取url中get的某个参数
+     * @param name 要获取url的get参数值的键名
+     * @returns {*}
+     */
+    function getUrlParam(name)
+    {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+        if (r!=null) return unescape(r[2]); return null; //返回参数值
+    }
+
+    $(document).ready(function(){
+        alert("id为："+getUrlParam("id"));
+
+        $("#div2").html("id为："+getUrlParam("id"));
+
+        getJson();
+
+    });
+
+
+
+    function getJson() {
+        $.ajax({
+            url: "http://localhost:8080/ssmTestMySQL/user/getUsersJSON.do",
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json;charset=UTF-8",
+            <!-- 向后端传输的数据 -->
+            data:  '{"id" : 9, "userName" : "手机11", "passWord" : "21548"}',
+            // data : JSON.stringify({
+            //     id : $("#user_id").val(),
+            // }),
+            success: function (result) { <!-- 处理后端返回的数据 -->
+                var message = JSON.stringify(result);
+                alert(message);
+
+                //json循环添加进表格
+                for(var i = 0; i<result.length; i++) {
+
+                    var tr = $("<tr></tr>"); //赋值
+                    tr.html('<td>'+result[i].id+'</td><td>'+result[i].userName+'</td><td >'+result[i].passWord+'</td>');
+                    //添加进id为table中
+                    $("#table").append(tr);
+
+                }
+                
+            },
+            error: function (result) {
+                //               $("#select-box").html("查询失败");
+            }
+        });
+    }
+</script>
+
+<body>
+<div id="div2"></div>
+
+
+
+<table id="table" width="100%" border=1 >
+    <tr>
+        <td>id</td>
+        <td>账户</td>
+        <td>密码</td>
+    </tr>
+</table>
+
+</body>
+</html>

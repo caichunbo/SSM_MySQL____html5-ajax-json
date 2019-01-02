@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 对entity下的实体类起个别名，起到简化的作用 -->
+    <!--这个是相当于给pojo 中的类起了一个别名。
+        别名的规范就是：类名首字母小写。
+        因此，只要需要用到这个类的完整路径的时候就可以将它简化。
+        例如：cn.itcast.ssm.pojo.UserConstom
+        可以写成 userConstom
+
+        没有别名这样写<select resultType="com.sjh.entity.VoteUser">
+        写了别名就可以这样写<select resultType="VoteUsers"> 直接写别名就可以不用再写实体的路径了。
+
+        注意：要将mapper.xml 和 mapper.Java 写在同一个目录下才可以使用。
+     -->
+    <typeAliases>
+        <!--设置这个包下面的所有类的别名  默认是类名小写-->
+        <package name="com.java.entity"></package>
+    </typeAliases>
+
+    <!--
+        设置单个类的别名
+　　　　　alias:取的别名
+　　　　　type：这个别名所对应的Java类    别名使用的时候与大小写无关
+     -->
+    <!--<typeAlias alias="Product" type="cn.itsource.domain.Product"/>-->
+</configuration>
